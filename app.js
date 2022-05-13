@@ -152,23 +152,25 @@ app.get("/reviews",async(req,res)=>{
 });
 
 app.post("/reviews",async(req,res)=>{
-    let reviewerName = req.body.reviewerName;
+   // let reviewerName = req.body.reviewerName;
+    let userId = req.body.user; 
     let productId = req.body.productId;
     let comment = req.body.comment;
     let rating = req.body.rating;
 
-    let review = new Review({reviewerName,productId,comment,rating});
+    let review = new Review({user:userId,productId,comment,rating});
     await review.save();
     res.send("user review created");
 });
 
 app.put("/reviews",async(req,res)=>{
-    let reviewerName = req.body.reviewerName;
+   // let reviewerName = req.body.reviewerName;
+    let userId = req.body.user; 
     let productId = req.body.productId;
     let comment = req.body.comment;
     let rating = req.body.rating;
 
-    let review = new Review({reviewerName,productId,comment,rating});
+    let review = new Review({user:userId,productId,comment,rating});
     try {
         await review.save();   
     } catch (error) {
